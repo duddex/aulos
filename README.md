@@ -56,9 +56,8 @@ aulos/
 │  └─ PluginEditor.*        Faceplate GUI + pipe visualizer
 ├─ test/                    Offline render harness
 │  └─ render_wav.cpp        Renders a note sequence to WAV (engine sanity check)
-├─ tools/                   pluginval.exe (downloaded)
 ├─ docs/Aulos.md            Control reference & usage
-├─ CMakeLists.txt           Builds the offline harness
+├─ CMakeLists.txt           Builds the plugin and the offline harness
 ├─ LICENSE                  AGPLv3 (this port)
 ├─ NOTICE                   Third-party component notices
 └─ licenses/                Aulos MIT notice (Cody Geary / CV funk)
@@ -72,16 +71,17 @@ another host (CLAP, AU, an offline renderer, etc.).
 ## Building
 
 ### Requirements
-- **Visual Studio 2022/2026** with the C++ toolset (**MSVC is required** — JUCE 8
-  dropped MinGW support).
-- **CMake ≥ 3.22** and a generator (Ninja recommended).
-- Internet access on first configure (JUCE is fetched via CMake `FetchContent`).
+- **Visual Studio 2022/2026** with the C++ toolset (**MSVC is required** — JUCE
+  no longer supports MinGW).
+- **CMake ≥ 3.22** and a C++20 compiler (the MSVC that ships with Visual Studio).
+- Internet access on first configure (JUCE 9.0.5 is fetched via CMake `FetchContent`).
 
 ### Plugin (VST3 + Standalone)
-From a **Developer** shell (or after calling `vcvars64.bat`):
 
 ```powershell
-cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Release
+git clone https://github.com/duddex/aulos.git
+cd aulos
+cmake -S . -B build
 cmake --build build --config Release
 ```
 
@@ -105,21 +105,20 @@ Copy `Aulos.vst3` to your VST3 folder:
 `%CommonProgramFiles%\VST3` (e.g. `C:\Program Files\Common Files\VST3`).
 
 ### Validate
+Download [pluginval](https://github.com/Tracktion/pluginval/releases) and run:
+
 ```powershell
-tools\pluginval.exe --strictness-level 8 --validate <path>\Aulos.vst3
+pluginval.exe --strictness-level 8 --validate <path>\Aulos.vst3
 ```
+
+## Releases
+
+GitHub Actions builds every push on Windows. Pushing a `v*` tag creates a release with a
+zip of the VST3, the standalone app, the docs and the licence files.
 
 ---
 
-## Credits & license
-
-- Original *Aulos* module, synthesis design, and DSP: **Cody Geary / CV funk** —
-  MIT License. All credit for the instrument and its sound belongs to the
-  original author. Manual: <https://codygeary.github.io/CV-Funk-Manual/free/>
-- This VST3/Standalone port keeps the engine intact and adds a JUCE host layer.
-- JUCE is used under its **AGPLv3** option (see Licensing below).
-
-## Licensing
+## Licence
 
 This port is released under the **GNU Affero General Public License v3.0
 (AGPLv3)** — see [LICENSE](LICENSE). The complete corresponding source code is
@@ -141,3 +140,9 @@ GmbH.
 > If you redistribute this software (source or binary), you must pass along the
 > complete source code and keep the `LICENSE`, `NOTICE`, and `licenses/` files.
 
+## Credits
+
+- Original *Aulos* module, synthesis design, and DSP: **Cody Geary / CV funk** —
+  MIT License. All credit for the instrument and its sound belongs to the
+  original author. Manual: <https://codygeary.github.io/CV-Funk-Manual/free/>
+- This VST3/Standalone port keeps the engine intact and adds a JUCE host layer.
