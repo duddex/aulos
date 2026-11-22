@@ -51,8 +51,7 @@ aulos-vst/
 ├─ dsp/                     Framework-agnostic engine (no VCV Rack, no JUCE)
 │  ├─ AulosDSP.h            Rack-free port of the module's FilterAulos.h
 │  ├─ AulosEngine.h/.cpp    Voice + process loop, plain-float I/O
-├─ juce/                    JUCE plugin wrapper
-│  ├─ CMakeLists.txt        VST3 + Standalone target (fetches JUCE)
+├─ src/                     JUCE plugin wrapper
 │  ├─ PluginProcessor.*     MIDI → voices, params, state, presets
 │  └─ PluginEditor.*        Faceplate GUI + pipe visualizer
 ├─ test/                    Offline render harness
@@ -82,14 +81,13 @@ another host (CLAP, AU, an offline renderer, etc.).
 From a **Developer** shell (or after calling `vcvars64.bat`):
 
 ```powershell
-cd juce
 cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build --config Release
 ```
 
 Artifacts:
-- `juce/build/Aulos_artefacts/Release/VST3/Aulos.vst3`
-- `juce/build/Aulos_artefacts/Release/Standalone/Aulos.exe`
+- `uild/Aulos_artefacts/Release/VST3/Aulos.vst3`
+- `uild/Aulos_artefacts/Release/Standalone/Aulos.exe`
 
 ### Offline engine harness (optional)
 A tiny, framework-free sanity check for the `dsp/` engine — it renders a short
@@ -98,7 +96,7 @@ isolation. Builds with MinGW or MSVC; the generated `.exe` and `.wav` are
 throwaway (git-ignored):
 
 ```powershell
-g++ -std=c++17 -O2 -Idsp test/render_wav.cpp dsp/AulosEngine.cpp -o render_wav.exe
+g++ -std=c++20 -O2 -Idsp test/render_wav.cpp dsp/AulosEngine.cpp -o render_wav.exe
 ./render_wav.exe
 ```
 

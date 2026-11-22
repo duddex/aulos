@@ -19,21 +19,21 @@ jobs:
       - name: Cache JUCE sources
         uses: actions/cache@v6
         with:
-          path: juce/build/_deps
-          key: juce-deps-${{ hashFiles('juce/CMakeLists.txt') }}
+          path: build/_deps
+          key: juce-deps-${{ hashFiles('CMakeLists.txt') }}
 
       - name: Configure
-        run: cmake -S juce -B juce/build
+        run: cmake -S . -B build
 
       - name: Build
-        run: cmake --build juce/build --config Release --parallel
+        run: cmake --build build --config Release --parallel
 
       - name: Package
         shell: pwsh
         run: |
           $out = "package"
           New-Item -ItemType Directory -Force -Path $out | Out-Null
-          $rel = "juce/build/Aulos_artefacts/Release"
+          $rel = "build/Aulos_artefacts/Release"
           Copy-Item -Recurse "$rel/VST3/Aulos.vst3" "$out/Aulos.vst3"
           Copy-Item "$rel/Standalone/Aulos.exe" "$out/Aulos.exe"
           Copy-Item "README.md","LICENSE","NOTICE" $out
