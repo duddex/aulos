@@ -86,8 +86,8 @@ cmake --build build --config Release
 ```
 
 Artifacts:
-- `uild/Aulos_artefacts/Release/VST3/Aulos.vst3`
-- `uild/Aulos_artefacts/Release/Standalone/Aulos.exe`
+- `build/Aulos_artefacts/Release/VST3/Aulos.vst3`
+- `build/Aulos_artefacts/Release/Standalone/Aulos.exe`
 
 ### Offline engine harness (optional)
 A tiny, framework-free sanity check for the `dsp/` engine — it renders a short
