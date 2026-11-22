@@ -18,15 +18,15 @@ It combines the following components:
 2. JUCE framework
    - Author:  Raw Material Software Limited
    - License: used here under the AGPLv3 option of JUCE's dual license.
-     https://juce.com/legal/juce-8-licence/
+     https://juce.com/legal/juce-9-licence/
    - Because JUCE is used under AGPLv3, this Port is distributed under AGPLv3
      and its complete corresponding source code is made available.
 
 3. VST3 SDK (bundled with JUCE)
    - Author:  Steinberg Media Technologies GmbH
    - "VST" is a trademark of Steinberg Media Technologies GmbH. The VST3 SDK is
-     distributed by Steinberg under its dual GPLv3 / Steinberg license; used
-     here under GPL-compatible terms. Steinberg's notices are retained.
+     licensed by Steinberg under the MIT license (as bundled with JUCE 9).
+     Steinberg's notices are retained.
 
 Distribution requirement (AGPLv3)
 ---------------------------------

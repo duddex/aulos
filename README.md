@@ -131,7 +131,7 @@ It combines three components (full details in [NOTICE](NOTICE)):
 |---|---|---|
 | Aulos synthesis engine (`dsp/`) | Cody Geary / CV funk | **MIT** — [licenses/Aulos-CVfunk-MIT.txt](licenses/Aulos-CVfunk-MIT.txt) (MIT is compatible with AGPLv3) |
 | JUCE framework | Raw Material Software | **AGPLv3 option** of JUCE's dual license |
-| VST3 SDK (bundled by JUCE) | Steinberg | dual GPLv3 / Steinberg; used under GPL-compatible terms |
+| VST3 SDK (bundled by JUCE) | Steinberg | MIT licence |
 
 Because JUCE is used under its **AGPLv3** option, the whole plugin is AGPLv3 and
 its source must be distributed with it. The MIT license and attribution for the
