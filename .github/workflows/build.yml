@@ -20,7 +20,7 @@ jobs:
         uses: actions/cache@v6
         with:
           path: build/_deps
-          key: juce-deps-${{ hashFiles('CMakeLists.txt') }}
+          key: juce-deps-${{ github.event.repository.name }}-${{ hashFiles('CMakeLists.txt') }}
 
       - name: Configure
         run: cmake -S . -B build
