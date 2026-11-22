@@ -47,7 +47,7 @@ See [docs/Aulos.md](docs/Aulos.md) for the full control reference.
 ## Repository layout
 
 ```
-aulos-vst/
+aulos/
 ├─ dsp/                     Framework-agnostic engine (no VCV Rack, no JUCE)
 │  ├─ AulosDSP.h            Rack-free port of the module's FilterAulos.h
 │  ├─ AulosEngine.h/.cpp    Voice + process loop, plain-float I/O
