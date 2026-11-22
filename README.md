@@ -142,6 +142,9 @@ GmbH.
 
 ## Credits
 
+Designed and developed by [duddex](https://github.com/duddex) with the help of a
+large language model (LLM).
+
 - Original *Aulos* module, synthesis design, and DSP: **Cody Geary / CV funk** —
   MIT License. All credit for the instrument and its sound belongs to the
   original author. Manual: <https://codygeary.github.io/CV-Funk-Manual/free/>
